@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { EnviosModel as Envios } from '../models/enviosModel.js';
 
 function getEnvio(nro_venta) {
@@ -30,8 +29,17 @@ function updateEnvio(nro_venta, estado) {
     return envio;
 }
 
+function deleteEnvio(nro_venta) {
+    const envio = Envios.findOneAndDelete({ nro_venta })
+
+    if(!envio) return false;
+
+    return envio;
+}
+
 export const EnviosService = {
     getEnvio,
     createEnvio,
     updateEnvio,
+    deleteEnvio,
 }

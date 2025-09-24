@@ -17,7 +17,7 @@ export const createEnvio = async (req, res) => {
     
         if(!newEnvio) return res.status(400).json({ message: 'No se pudo crear el envio.'});
     
-        res.status(201).json({ datos: newEnvio });
+        res.status(201).json({ datos: newEnvio , message: 'Envio creado correctamente.'});
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
@@ -31,5 +31,14 @@ export const updateEnvio = async (req, res) => {
 
     if(!updatedEnvio) return res.status(404).json({ message: 'Envio no encontrado.'});
 
-    res.json({ datos: [updatedEnvio] });
+    res.json({ datos: [updatedEnvio], message: 'Envio actualizado correctamente.' });
+}
+
+export const deleteEnvio = async(req, res) => {
+    const { venta } = req.params;
+    const deletedEnvio = await EnviosService.deleteEnvio(venta);
+
+    if(!deletedEnvio) return res.status(404).json({ message: 'Envio no encontrado.'});
+
+    res.json({ datos: [deletedEnvio], message: 'Este envio fue eliminado correctamente' });
 }
