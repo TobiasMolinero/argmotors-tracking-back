@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(compression())
 app.use(morgan('dev'));
 app.use(cors({
-    origin: "https://argmotors-tracking-front.vercel.app",
+    origin: ["https://argmotors-tracking-front.vercel.app", "http://localhost:4321"],
     methods: ["GET", "POST", "PATCH"]
 }));
 
