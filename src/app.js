@@ -13,7 +13,10 @@ const app = express();
 app.use(express.json());
 app.use(compression())
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors({
+    origin: "https://argmotors-tracking-front-git-main-tobiasmolineros-projects.vercel.app/",
+    methods: ["GET", "POST", "PATCH"]
+}));
 
 conectarDB();
 
