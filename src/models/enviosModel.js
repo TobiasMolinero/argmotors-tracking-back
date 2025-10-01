@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 export const enviosSchema = new mongoose.Schema({
     nro_venta: { type: String, required: true, unique: true },
-    hbl: { type: String, required: true, unique: true },
+    hbl: { type: String, required: true },
     estado: { type: String, required: true },
     contenedor_guia: String,
     fecha_envio: String,
