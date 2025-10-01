@@ -18,14 +18,14 @@ export const register = async (req, res, next) => {
 export async function login(req, res, next) {
     try {
         const { username, password } = req.body;
-        
-        const result = await login({ username, password });
+        const result = await AuthService.login({ username, password });
         
         res.status(200).json({
             success: true,
             data: result
         });
     } catch (error) {
+        console.log(error)
         next(error); // Pasa al middleware de manejo de errores
     }
 }

@@ -22,9 +22,8 @@ async function registerUser(userData) {
             throw error;
         }
 
-        const passwordHash = encrypt(password);
-        console.log(passwordHash)
         // Crear usuario
+        const passwordHash = await encrypt(password);
         const user = new User({ username, password: passwordHash, role });
         await user.save();
         
@@ -41,7 +40,7 @@ async function registerUser(userData) {
 
 async function login({ username, password }) {
     try {
-        const user = new User.findOne({ username })
+        const user = await User.findOne({ username })
 
         if(!user) {
             const error = new Error('Usuario no encontrado');
