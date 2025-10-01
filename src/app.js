@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(compression())
 app.use(morgan('dev'));
 app.use(cors({
-    origin: process.env.FRONT_URL,
+    origin: "https://international-tracking.vercel.app/",
     methods: ["GET", "POST", "PATCH"]
 }));
 
