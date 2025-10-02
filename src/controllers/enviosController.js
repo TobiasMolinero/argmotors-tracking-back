@@ -1,6 +1,14 @@
 // import { EnviosService } from "../services/enviosService.js";
 import { EnviosService } from "../services/enviosMongoService.js";
 
+export const all = async (req, res) => {
+    const envios = await EnviosService.all();
+
+    if(!envios) return res.status(404).json({ message: 'Envios no encontrados.'})
+
+    res.json({ datos: envios })
+} 
+
 export const getEnvio = async (req, res) => {
     const { venta } = req.params;
     const envio = await EnviosService.getEnvio(venta);

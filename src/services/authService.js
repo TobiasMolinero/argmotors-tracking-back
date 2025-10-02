@@ -56,12 +56,12 @@ async function login({ username, password }) {
             throw error;
         }
 
-        const token = generateAccessToken({ user: username, role: user.role })
+        const token = generateAccessToken({ user: username })
 
         return {
             token,
+            username,
         }
-
     } catch (error) {
         throw error;
     }

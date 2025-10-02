@@ -22,11 +22,13 @@ app.use(cors({
         "http://localhost:4321"
     ],
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-    // credentials: true,
-    // allowedHeaders: ["Content-Type", "Authorization"]
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 conectarDB();
+
+
 
 app.use('/auth', routerAuth);
 app.use('/envios', routerEnvios);

@@ -1,5 +1,13 @@
 import { EnviosModel as Envios } from '../models/enviosModel.js';
 
+function all() {
+    const envios = Envios.find({})
+
+    if(!envios) return false;
+
+    return envios;
+}
+
 function getEnvio(nro_venta) {
     const envio = Envios.findOne({ nro_venta });
 
@@ -38,6 +46,7 @@ function deleteEnvio(nro_venta) {
 }
 
 export const EnviosService = {
+    all,
     getEnvio,
     createEnvio,
     updateEnvio,
