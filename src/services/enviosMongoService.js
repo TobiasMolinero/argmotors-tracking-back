@@ -62,7 +62,6 @@ async function updateStatusEnvio(nro_venta) {
 
         return nuevoEstado;
     } catch (error) {
-        console.log(error)
         return false
     }
 }

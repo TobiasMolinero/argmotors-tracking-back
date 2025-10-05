@@ -28,7 +28,6 @@ export const createEnvio = async (req, res) => {
     
         res.status(201).json({ datos: newEnvio , message: 'Envio creado correctamente.'});
     } catch (error) {
-        console.log(error)
         res.status(400).json({ message: error.message });
     }
 }

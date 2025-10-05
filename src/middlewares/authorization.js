@@ -15,7 +15,6 @@ export async function authenticateAccessToken(req, res, next) {
 
     try {
         const payload = verifyAccessToken(token)
-        console.log(payload)
         req.user = payload
         next()
     } catch (err) {
