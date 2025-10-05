@@ -11,6 +11,7 @@ export const all = async (req, res) => {
 
 export const getEnvio = async (req, res) => {
     const { venta } = req.params;
+
     const envio = await EnviosService.getEnvio(venta);
     
     if(!envio) return res.status(404).json({ message: 'Envio no encontrado.'});
@@ -27,19 +28,33 @@ export const createEnvio = async (req, res) => {
     
         res.status(201).json({ datos: newEnvio , message: 'Envio creado correctamente.'});
     } catch (error) {
+        console.log(error)
         res.status(400).json({ message: error.message });
     }
 }
 
 export const updateEnvio = async (req, res) => {
     const { venta } = req.params;
-    const { estado } = req.body;
+    const envio = req.body;
 
-    const updatedEnvio = await EnviosService.updateEnvio(venta, estado);
+    const updatedEnvio = await EnviosService.updateEnvio(venta);
 
     if(!updatedEnvio) return res.status(404).json({ message: 'Envio no encontrado.'});
 
     res.json({ datos: [updatedEnvio], message: 'Envio actualizado correctamente.' });
+}
+
+export const updateStatusEnvio = async (req, res) => {
+    const { venta } = req.params;
+    
+    const updatedStatus = await EnviosService.updateStatusEnvio(venta);
+    
+    if(!updatedStatus) return res.status(404).json({ message: 'Envio no encontrado o no se pudo actualizar el estado.'});
+
+    res.json({
+        success: true,
+        message: 'Estado del envio actualizado correctamente.',
+    })
 }
 
 export const deleteEnvio = async(req, res) => {

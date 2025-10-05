@@ -7,6 +7,7 @@ import { routerEnvios } from './routes/envios.routes.js';
 import { routerAuth } from './routes/auth.routes.js';
 import conectarDB from './db/db.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import cookieParser from 'cookie-parser';   
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(compression())
 app.use(morgan('dev'));
+app.use(cookieParser());
 
 app.use(cors({
     origin: [
@@ -27,8 +29,6 @@ app.use(cors({
 }));
 
 conectarDB();
-
-
 
 app.use('/auth', routerAuth);
 app.use('/envios', routerEnvios);
