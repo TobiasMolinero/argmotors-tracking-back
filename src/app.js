@@ -27,10 +27,7 @@ app.use(cors({
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
-app.options("*", cors({
-  origin: process.env.FRONT_URL,
-  credentials: true
-}));
+app.options("*", cors());
 
 conectarDB();
 
