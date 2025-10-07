@@ -27,7 +27,15 @@ app.use(cors({
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
-app.options("*", cors());
+app.options('/', cors({
+    origin: [
+        process.env.FRONT_URL,
+        "http://localhost:4321"
+    ],
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 conectarDB();
 
